@@ -2,13 +2,21 @@ const { MerkleTree } = require('merkletreejs')
 
 const SHA256 = require('crypto-js/sha256')
 
-const leaves = ['a', 'b', 'c'].map(x => SHA256(x))
+const addresses = [
+    "0x9700f414bdcB4Dd211716D424D61490b42eD0883",
+    "0xabcdefabcdefabcdefabcdefabcdefabcdefabc",
+    "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+    "0xbeefbeefbeefbeefbeefbeefbeefbeefbeefbeef",
+    "0xcafebabecafebabecafebabecafebabecafebabe"
+]
+
+const leaves = addresses.map(x => SHA256(x))
 
 const tree = new MerkleTree(leaves, SHA256)
 
 const root = tree.getRoot().toString('hex')
 
-const leaf = SHA256('c')
+const leaf = SHA256('0x9700f414bdcB4Dd211716D424D61490b42eD0883')
 
 const proof = tree.getProof(leaf)
 
