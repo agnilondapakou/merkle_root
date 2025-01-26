@@ -29,24 +29,23 @@ function verifyAddress(address, proof, root) {
         currentHash = hash(proof[i] + currentHash);
     }
 
-    return currentHash === root;
+    return currentHash == root;
 }
 
 const addresses = [
-    "0x1234567890abcdef1234567890abcdef12345678",
-    "0xabcdefabcdefabcdefabcdefabcdefabcdefabc",
-    "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
-    "0xbeefbeefbeefbeefbeefbeefbeefbeefbeefbeef",
-    "0xcafebabecafebabecafebabecafebabecafebabe"
+    "0x9700f414bdcB4Dd211716D424D61490b42eD0883",
+    // "0xabcdefabcdefabcdefabcdefabcdefabcdefabc",
+    // "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+    // "0xbeefbeefbeefbeefbeefbeefbeefbeefbeefbeef",
+    // "0xcafebabecafebabecafebabecafebabecafebabe"
 ];
 
 const merkleRoot = getMerkleRoot(addresses);
 console.log("Merkle Root:", merkleRoot);
 
 const proof = [
-    hash("0x1234567890abcdef1234567890abcdef12345678"),
-    hash("0xabcdefabcdefabcdefabcdefabcdefabcdefabc")
+    hash("0x9700f414bdcB4Dd211716D424D61490b42eD0883")
 ];
 
-const isValid = verifyAddress("0x1234567890abcdef1234567890abcdef12345678", proof, merkleRoot);
+const isValid = verifyAddress("0x9700f414bdcB4Dd211716D424D61490b42eD0883", proof, merkleRoot);
 console.log("Address Verification:", isValid);
